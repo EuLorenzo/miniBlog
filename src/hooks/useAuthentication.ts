@@ -3,6 +3,7 @@ import {
   Auth,
   createUserWithEmailAndPassword,
   getAuth,
+  signOut,
   updateProfile,
 } from "firebase/auth";
 import { userType } from "../types/userType";
@@ -59,11 +60,17 @@ const useAuthentication = () => {
     }
   };
 
+  const logout = () => {
+    checkIfIsCancelled();
+
+    signOut(auth);
+  };
+
   useEffect(() => {
     return () => setCancelled(true);
   }, []);
 
-  return { auth, createUser, error, loading };
+  return { auth, createUser, error, loading, logout };
 };
 
 export default useAuthentication;
