@@ -23,7 +23,7 @@ function App() {
 
   return (
     <div>
-      <AuthProvider value={user}>
+      <AuthProvider user={user}>
         <BrowserRouter>
           <Router />
         </BrowserRouter>
