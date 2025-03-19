@@ -9,7 +9,7 @@ function App() {
   const [user, setUser] = useState<User | null | undefined>(undefined);
   const { auth } = useAuthentication();
 
-  const loadingUser = user === undefined || user === null;
+  const loadingUser = user === undefined;
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
