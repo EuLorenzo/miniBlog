@@ -8,7 +8,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const { createUser, error: AuthError, loading } = useAuthentication();
+  const { login, error: AuthError, loading } = useAuthentication();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -19,7 +19,7 @@ const Login = () => {
       password,
     };
 
-    await createUser(user);
+    await login(user);
   };
 
   useEffect(() => {
