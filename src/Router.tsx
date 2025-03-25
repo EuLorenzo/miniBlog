@@ -7,6 +7,7 @@ import Register from "./pages/Register/Register";
 import CreatePost from "./pages/CreatePost/CreatePost";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import useAuthValue from "./hooks/useAuthValue";
+import Search from "./pages/Search/Search";
 
 const Router = () => {
   const { user } = useAuthValue();
@@ -16,6 +17,7 @@ const Router = () => {
       <Route path="/" element={<DefaultLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/search" element={<Search />} />
         <Route
           path="/login"
           element={!user ? <Login /> : <Navigate to="/" />}

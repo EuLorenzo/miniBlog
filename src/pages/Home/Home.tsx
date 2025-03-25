@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./Home.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useFetchDocuments from "../../hooks/useFetchDocuments";
 import PostDetail from "../../components/PostDetail/PostDetail";
 
@@ -10,8 +10,14 @@ const Home = () => {
     docCollection: "posts",
   });
 
+  const navigate = useNavigate();
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (query) {
+      return navigate(`/search?q=${query}`);
+    }
   };
 
   return (
@@ -30,7 +36,7 @@ const Home = () => {
         {loading && <p>Carregando ...</p>}
         {posts &&
           posts.map((post) => {
-            return <PostDetail post={post} />;
+            return <PostDetail key={post.id} post={post} />;
           })}
         {posts && posts.length === 0 && (
           <div className={styles.noposts}>
